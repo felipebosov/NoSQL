@@ -6,7 +6,7 @@ O projeto consiste em um banco de dados capaz de armazenar os produtos de uma lo
 
 FUNCIONALIDADES
 
-###Adicionar novos produtos: 
+Adicionar novos produtos: 
   O sistema deve permitir a entrada de novos produtos no catálogo, de forma a aumentar aos opções da loja.
   Caso o item já exista deve retornar as caracteristicas do mesmo
   Caso mais duas requisições de entrada sejam feitas, deve aceitar a que executar primeiro e cancelar a segunda.
