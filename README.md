@@ -65,3 +65,105 @@ Banco Utilizado: MONGODB
   Escalabilidade de Armazenamento e Computação: Expansão independente de armazenamento e capacidade de computação.
   
   Comunidade e Ecosistema: Ampla comunidade e muitas ferramentas adicionais.
+
+  Modelo Json que será usado no MongoDB
+  
+  {
+  "Clientes": [
+    {
+      "customer_id": "C001",
+      "name": "João Silva",
+      "email": "joao.silva@example.com",
+      "address": "Rua A, 123, São Paulo",
+      "cart": {
+        "cart_id": "CART001",
+        "items": [
+          {
+            "product_id": "P001",
+            "quantity": 2,
+            "price": 50.0
+          },
+          {
+            "product_id": "P002",
+            "quantity": 1,
+            "price": 30.0
+          }
+        ]
+      },
+      "orders": [
+        {
+          "order_id": "O001",
+          "order_date": "2024-09-18",
+          "total_amount": 130.0,
+          "items": [
+            {
+              "product_id": "P001",
+              "quantity": 2,
+              "price": 50.0
+            },
+            {
+              "product_id": "P002",
+              "quantity": 1,
+              "price": 30.0
+            }
+          ],
+          "status": "Concluído"
+        }
+      ]
+    }
+  ],
+  "Produtos": [
+    {
+      "product_id": "P001",
+      "name": "Produto A",
+      "description": "Descrição do Produto A",
+      "price": 50.0,
+      "category": {
+        "category_id": "CAT001",
+        "name": "Categoria A",
+        "description": "Descrição da Categoria A"
+      },
+      "stock": 100,
+      "specifications": {
+        "cor": "Vermelho",
+        "tamanho": "M"
+      }
+    },
+    {
+      "product_id": "P002",
+      "name": "Produto B",
+      "description": "Descrição do Produto B",
+      "price": 30.0,
+      "category": {
+        "category_id": "CAT002",
+        "name": "Categoria B",
+        "description": "Descrição da Categoria B"
+      },
+      "stock": 50,
+      "specifications": {
+        "cor": "Azul",
+        "tamanho": "G"
+      }
+    }
+  ],
+  "Categorias": [
+    {
+      "category_id": "CAT001",
+      "name": "Categoria A",
+      "description": "Descrição da Categoria A"
+    },
+    {
+      "category_id": "CAT002",
+      "name": "Categoria B",
+      "description": "Descrição da Categoria B"
+    }
+  ],
+  "Administradores": [
+    {
+      "admin_id": "A001",
+      "name": "Maria Oliveira",
+      "email": "maria.oliveira@example.com"
+    }
+  ]
+}
+
