@@ -168,3 +168,11 @@ Banco Utilizado: MONGODB
 }
 
 image: ![UML_ProjetoNoSQL](https://github.com/user-attachments/assets/0e00be8e-7c28-4d51-be72-cc515280f865)
+
+Index utilizados no projeto:
+![WhatsApp Image 2024-09-26 at 17 01 18](https://github.com/user-attachments/assets/c3228b7c-916f-4297-8254-24807b772ced)
+
+![WhatsApp Image 2024-09-26 at 17 01 02](https://github.com/user-attachments/assets/95f3e666-e4b8-4372-a657-ed36a64d7347)
+
+
+
