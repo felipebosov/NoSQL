@@ -174,5 +174,14 @@ Index utilizados no projeto:
 
 ![WhatsApp Image 2024-09-26 at 17 01 02](https://github.com/user-attachments/assets/95f3e666-e4b8-4372-a657-ed36a64d7347)
 
+![image](https://github.com/user-attachments/assets/673249e0-4226-499c-bc25-3f54570f2afa)
+![image](https://github.com/user-attachments/assets/347511ce-2d7b-4ee3-8c6d-733dbc4943bc)
+![image](https://github.com/user-attachments/assets/a13a9589-31ff-4df9-8850-79a510a4ccdc)
+![image](https://github.com/user-attachments/assets/c1c03fc1-b663-4501-9b2a-f6ecba37658a)
+
+
+
+
+
 
 
