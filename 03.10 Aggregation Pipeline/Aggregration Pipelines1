@@ -10,7 +10,7 @@ db.movies.aggregate([
     $sort: { valor: -1 } 
   },
   {
-    // Limitar: retornar apenas os 5 melhores anos
+    // Limitar: retornar apenas os 5 produtos com maior preço
     $limit: 5
   }
 ]);
