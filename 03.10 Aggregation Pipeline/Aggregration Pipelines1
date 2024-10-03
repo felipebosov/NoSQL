@@ -1,0 +1,16 @@
+db.movies.aggregate([
+  {
+    // Adiciona um campo de desconto
+    $addFields: {
+      desconto: { $multiply: ["$preco", 0.1] }  
+    }
+  },
+  { 
+    // Ordena por valor em ordem decrescente
+    $sort: { valor: -1 } 
+  },
+  {
+    // Limitar: retornar apenas os 5 melhores anos
+    $limit: 5
+  }
+]);
