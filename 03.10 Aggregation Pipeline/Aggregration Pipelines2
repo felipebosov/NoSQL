@@ -1,4 +1,4 @@
-db.vendas.aggregate([
+db.vendas.SiteCompras([
      {
     $facet: {
       faixa1: [
