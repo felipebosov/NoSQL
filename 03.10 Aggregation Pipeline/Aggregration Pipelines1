@@ -1,4 +1,4 @@
-db.movies.aggregate([
+db.SiteCompras.aggregate([
   {
     // Adiciona um campo de desconto
     $addFields: {
