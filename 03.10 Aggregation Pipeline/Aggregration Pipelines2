@@ -1,0 +1,22 @@
+db.vendas.aggregate([
+     {
+    $facet: {
+      faixa1: [
+        { $match: { valor: { $lte: 50 } } },
+        { $sort: { valor: 1 } }  // Ordena dentro da faixa
+      ],
+      faixa2: [
+        { $match: { valor: { $gt: 50, $lte: 100 } } },
+        { $sort: { valor: 1 } }  // Ordena dentro da faixa
+      ],
+      faixa3: [
+        { $match: { valor: { $gt: 100, $lte: 150 } } },
+        { $sort: { valor: 1 } }  // Ordena dentro da faixa
+      ],
+      faixa4: [
+        { $match: { valor: { $gt: 150 } } },
+        { $sort: { valor: 1 } }  // Ordena dentro da faixa
+      ]
+    }
+  }
+]);
