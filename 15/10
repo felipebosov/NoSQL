@@ -1,0 +1,139 @@
+// src/index.ts
+
+import express, { Request, Response } from 'express';
+import { createClient } from 'redis';
+import dotenv from 'dotenv';
+
+// Carrega as variáveis de ambiente do arquivo .env
+dotenv.config();
+
+const redisHost = process.env.REDIS_HOST;
+const redisPort = Number(process.env.REDIS_PORT);
+const redisPassword = process.env.REDIS_PASSWORD;
+const port = process.env.PORT || 3000;
+
+if (!redisHost || !redisPort || !redisPassword) {
+  console.error('Por favor, defina REDIS_HOST, REDIS_PORT e REDIS_PASSWORD no arquivo .env');
+  process.exit(1);
+}
+
+// Cria o cliente Redis
+const client = createClient({
+  url: redis://:${redisPassword}@${redisHost}:${redisPort},
+});
+
+// Lida com erros de conexão
+client.on('error', (err) => console.error('Erro no cliente Redis', err));
+
+// Inicializa o cliente Redis e o servidor Express
+(async () => {
+  try {
+    await client.connect();
+    console.log('Conectado ao Redis.');
+
+    const app = express();
+
+    const counterKey = 'site:visitorCount';
+
+    // Inicializa o contador se não existir
+    const exists = await client.exists(counterKey);
+    if (!exists) {
+      await client.set(counterKey, 0);
+      console.log('Contador inicializado.');
+    }
+
+    // Middleware para logar cada requisição
+    app.use((req: Request, res: Response, next) => {
+      console.log(${req.method} ${req.url});
+      next();
+    });
+
+    // Rota principal que incrementa o contador
+    app.get('/', async (req: Request, res: Response) => {
+      try {
+        const newCount = await client.incr(counterKey);
+        res.send(<h1>Número de visitantes: ${newCount}</h1>);
+      } catch (error) {
+        console.error('Erro ao incrementar o contador:', error);
+        res.status(500).send('Erro interno do servidor.');
+      }
+    });
+
+    // Rota para obter o contador sem incrementar
+    app.get('/count', async (req: Request, res: Response) => {
+      try {
+        const count = await client.get(counterKey);
+        res.send(<h1>Número de visitantes: ${count}</h1>);
+      } catch (error) {
+        console.error('Erro ao obter o contador:', error);
+        res.status(500).send('Erro interno do servidor.');
+      }
+    });
+
+    // Rota para resetar o contador (opcional)
+    app.post('/reset', async (req: Request, res: Response) => {
+      try {
+        await client.set(counterKey, 0);
+        res.send('<h1>Contador resetado.</h1>');
+      } catch (error) {
+        console.error('Erro ao resetar o contador:', error);
+        res.status(500).send('Erro interno do servidor.');
+      }
+    });
+
+    // Inicia o servidor
+    app.listen(port, () => {
+      console.log(Servidor rodando em http://localhost:${port});
+    });
+  } catch (error) {
+    console.error('Erro ao conectar ao Redis:', error);
+    process.exit(1);
+  }
+})();
+
+{
+  "name": "minha-instancia-redis",
+  "memory_size": 2048, // Tamanho da memória em MB
+  "provider": "aws", // Provedor de nuvem: aws, azure, gcp
+  "region": "sa-east-1", // Região do provedor
+  "port": 6379, // Porta padrão do Redis
+  "plan_id": "pln-1234567890", // ID do plano escolhido
+  "modules": ["redisearch", "redisjson"], // Módulos adicionais
+  "security": {
+    "enable_tls": true,
+    "allowed_ips": ["192.168.1.100", "192.168.1.101"]
+  }
+}
+
+import { createClient } from 'redis';
+
+const client = createClient({
+    password: 'OYtatoY0fVw2etyahUD88GZzPalwqDrV',
+    socket: {
+        host: 'redis-16967.c308.sa-east-1-1.ec2.redns.redis-cloud.com',
+        port: 16967
+    }
+});
+
+{
+  "name": "visitor-counter",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "start": "ts-node src/index.ts",
+    "prod": "node dist/index.js"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "redis": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/node": "^16.11.7",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.4.4"
+  }
+}
